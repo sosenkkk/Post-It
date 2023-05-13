@@ -2,20 +2,22 @@
   position: fixed;
   width: 90%;
   left: 5%;
-  top: 20vh;
-  background: white;
+  top: 10vh;
+  background: #121212;
+  color: white;
   border-radius: 5px;
   z-index: 200;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  
 }
 
 .modal__header {
-  border-bottom: 2px solid #3b0062;
+  border-bottom: 2px solid #560bad;
 }
 
 .modal__header h1 {
   font-size: 1.5rem;
-  color: #3b0062;
+  color: #560bad;
   margin: 1rem;
 }
 

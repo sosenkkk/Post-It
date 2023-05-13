@@ -147,7 +147,7 @@ class FeedEdit extends Component {
           <form>
             <Input
               id="title"
-              label="Title"
+              placeholder="Title"
               control="input"
               onChange={this.postInputChangeHandler}
               onBlur={this.inputBlurHandler.bind(this, 'title')}
@@ -157,7 +157,7 @@ class FeedEdit extends Component {
             />
             <FilePicker
               id="image"
-              label="Image"
+              placeholder="Image"
               control="input"
               onChange={this.postInputChangeHandler}
               onBlur={this.inputBlurHandler.bind(this, 'image')}
@@ -172,9 +172,9 @@ class FeedEdit extends Component {
             </div>
             <Input
               id="content"
-              label="Content"
+              placeholder="Content"
               control="textarea"
-              rows="5"
+              rows="4"
               onChange={this.postInputChangeHandler}
               onBlur={this.inputBlurHandler.bind(this, 'content')}
               valid={this.state.postForm['content'].valid}

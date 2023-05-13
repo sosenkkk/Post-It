@@ -14,6 +14,10 @@ const postSchema= new Schema({
         type: String,
         required: true
     },
+    creatorName:{
+        type: String,
+        required: true
+    },
 
     creator:{
         type : Schema.Types.ObjectId,

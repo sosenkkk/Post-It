@@ -3,6 +3,14 @@ const fs = require("fs");
 const path = require("path");
 const Post = require("../models/post");
 const User = require("../models/user");
+const cloudinary = require("cloudinary").v2;
+const dotenv = require("dotenv").config();
+
+cloudinary.config({
+  cloud_name: `${process.env.cloud_name}`,
+  api_key: `${process.env.api_key}`,
+  api_secret: `${process.env.api_secret}`,
+});
 
 exports.getPosts = (req, res, next) => {
   const currentPage = req.query.page || 1;
@@ -38,44 +46,59 @@ exports.createPost = (req, res, next) => {
     error.statusCode = 422;
     throw error;
   }
-  if (!req.file) {
+  if (!req.files) {
     const error = new Error("No image provided");
     error.statusCode = 422;
     throw error;
   }
-  const imageUrl = req.file.path.replace("\\", "/");
-  const title = req.body.title;
-  const content = req.body.content;
-  let creator;
-  const post = new Post({
-    title: title,
-    content: content,
-    imageUrl: imageUrl,
-    creator: req.userId,
-  });
-  post
-    .save()
-    .then((result) => {
-      return User.findById(req.userId);
-    })
-    .then((user) => {
+  const image = req.files.image;
+  console.log(image)
+  cloudinary.uploader.upload(image.tempFilePath, (err, result) => {
+    if(err){
+      console.log(err)
+    }else{
+      
+      const imageUrl = result.url
+      const title = req.body.title;
+      const content = req.body.content;
+      let creator;
+      let post;
+      User.findById(req.userId).then(user=>{
       creator = user;
-      user.posts.push(post);
-      return user.save();
-    })
-    .then((result) => {
-      res.status(201).json({
-        message: "Post created",
-        post: post,
-        creator: { _id: creator._id, name: creator.name },
+       post = new Post({
+        title: title,
+        content: content,
+        imageUrl: imageUrl,
+        creatorName:user.name,
+        creator: req.userId,
       });
-    })
-    .catch((err) => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
-      }
-      next(err);
-    });
+      return post.save()
+        .then((result) => {
+          return User.findById(req.userId);
+        })
+        .then((user) => {
+          creator = user;
+          user.posts.push(post);
+          return user.save();
+        })
+        .then((result) => {
+          res.status(201).json({
+            message: "Post created",
+            post: post,
+            creator: { _id: creator._id, name: creator.name },
+          });
+        })
+      })
+        .catch((err) => {
+          if (!err.statusCode) {
+            err.statusCode = 500;
+          }
+          next(err);
+        });
+    }
+  })
+  
+
 };
 
 exports.getPost = (req, res, next) => {

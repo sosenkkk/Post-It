@@ -3,6 +3,7 @@ import React from 'react';
 import './Image.css';
 
 const image = props => (
+  
   <div
     className="image"
     style={{

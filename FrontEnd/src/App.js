@@ -54,6 +54,7 @@ class App extends Component {
     localStorage.removeItem("token");
     localStorage.removeItem("expiryDate");
     localStorage.removeItem("userId");
+    this.props.history.replace("/");
   };
 
   loginHandler = (event, authData) => {
@@ -161,7 +162,7 @@ class App extends Component {
   render() {
     let routes = (
       <Switch>
-        <Route path="/" exact render={(props) => <Home />} />
+        {/* <Route path="/" exact render={(props) => <Home />} /> */}
         <Route
           path="/login"
           exact
@@ -184,13 +185,11 @@ class App extends Component {
             />
           )}
         />
-        <Redirect to="/" />
       </Switch>
     );
     if (this.state.isAuth) {
       routes = (
         <Switch>
-          <Route path="/" exact render={(props) => <Home />} />
           <Route
             path="/feed"
             exact
@@ -198,6 +197,7 @@ class App extends Component {
               <FeedPage userId={this.state.userId} token={this.state.token} />
             )}
           />
+           
           <Route
             path="/:postId"
             render={(props) => (
@@ -208,7 +208,6 @@ class App extends Component {
               />
             )}
           />
-          <Redirect to="/feed" />
         </Switch>
       );
     }
@@ -238,6 +237,7 @@ class App extends Component {
             />
           }
         />
+        <Route path="/" exact render={(props) => <Home />} />
         {routes}
       </Fragment>
     );

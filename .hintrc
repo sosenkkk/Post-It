@@ -11,6 +11,9 @@
           "scrollbar-width"
         ]
       }
-    ]
+    ],
+    "apple-touch-icons": "off",
+    "compat-api/html": "off",
+    "no-inline-styles": "off"
   }
 }

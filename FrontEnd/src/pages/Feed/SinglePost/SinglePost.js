@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Button from '../../../components/Button/Button';
 import Image from '../../../components/Image/Image';
 import './SinglePost.css';
 
@@ -28,8 +28,8 @@ class SinglePost extends Component {
       .then(resData => {
         this.setState({
           title: resData.post.title,
-          author: resData.post.creator.name,
-          image: 'http://localhost:8080/'+ resData.post.imageUrl,
+          author: resData.post.creatorName,
+          image:  resData.post.imageUrl,
           date: new Date(resData.post.createdAt).toLocaleDateString('en-US'),
           content: resData.post.content
         });
@@ -50,6 +50,12 @@ class SinglePost extends Component {
           <Image contain imageUrl={this.state.image} />
         </div>
         <p>{this.state.content}</p>
+        <div className='action_container'>
+        <Button mode="flat" link={"/feed"}>
+        Back
+      </Button>
+        </div>
+        
       </section>
     );
   }

@@ -2,19 +2,30 @@
   width: 90%;
   margin: auto;
   text-align: center;
-  color: #3b0062;
+  color: #560bad;
+}
+
+.single-post p{
+  font-size: 1rem;
+  color: white;
+}
+
+.action_container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .single-post h2 {
   font-size: 1rem;
-  color: #464646;
+  color: #f5f5f5;
   padding-bottom: 1rem;
-  border-bottom: 2px solid #464646;
+  border-bottom: 2px solid #f6f6f6;
 }
 
 .single-post__image {
-  height: 20rem;
-  width: 20rem;
+  height: 24rem;
+  width: 100%;
   margin: 1rem auto;
 }
 

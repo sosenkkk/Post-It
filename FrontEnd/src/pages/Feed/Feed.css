@@ -1,11 +1,15 @@
 .feed__status {
   width: 90%;
-  margin: 1rem auto;
+  margin: 1.2rem auto;
 }
 
 .feed__status form {
   display: flex;
   align-items: center;
+}
+
+.feed__status input {
+  border-radius: 12px;
 }
 
 .feed__status form * {

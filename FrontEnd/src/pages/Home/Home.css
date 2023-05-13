@@ -122,10 +122,7 @@
     translateY(-8vh);
 }
 .scroll-info,
-header {
-  position: absolute;
-  left: 1rem;
-}
+
 
 .scroll-info {
   top: 1rem;

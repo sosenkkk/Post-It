@@ -113,7 +113,6 @@ class Feed extends Component {
   startEditPostHandler = (postId) => {
     this.setState((prevState) => {
       const loadedPost = { ...prevState.posts.find((p) => p._id === postId) };
-
       return {
         isEditing: true,
         editPost: loadedPost,
@@ -282,10 +281,10 @@ class Feed extends Component {
                 <Post
                   key={post._id}
                   id={post._id}
-                  author={post.creator}
+                  author={post.creatorName}
                   date={new Date(post.createdAt).toLocaleDateString("en-US")}
                   title={post.title}
-                  image={post.imageUrl}
+                  image={post.imagePath}
                   content={post.content}
                   onStartEdit={this.startEditPostHandler.bind(this, post._id)}
                   onDelete={this.deletePostHandler.bind(this, post._id)}
