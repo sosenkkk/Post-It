@@ -8,6 +8,7 @@ import Paginator from "../../components/Paginator/Paginator";
 import Loader from "../../components/Loader/Loader";
 import ErrorHandler from "../../components/ErrorHandler/ErrorHandler";
 import "./Feed.css";
+import { BASE_URL } from "../../util/helper";
 
 class Feed extends Component {
   state = {
@@ -23,7 +24,7 @@ class Feed extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:8080/auth/status",{
+    fetch(BASE_URL+"/auth/status",{
       headers: {
         Authorization : 'Bearer '+ this.props.token
       }
@@ -55,7 +56,7 @@ class Feed extends Component {
       page--;
       this.setState({ postPage: page });
     }
-    fetch("http://localhost:8080/feed/posts?page=" + page, {
+    fetch(BASE_URL+"/feed/posts?page=" + page, {
       headers: {
         Authorization: "Bearer " + this.props.token,
       },
@@ -84,7 +85,7 @@ class Feed extends Component {
 
   statusUpdateHandler = (event) => {
     event.preventDefault();
-    fetch("http://localhost:8080/auth/status",{
+    fetch(BASE_URL+"/auth/status",{
       method : 'PATCH',
       headers : {
         'Content-Type':'application/json',
@@ -133,11 +134,11 @@ class Feed extends Component {
     formData.append("title", postData.title);
     formData.append("content", postData.content);
     formData.append("image", postData.image);
-    let url = "http://localhost:8080/feed/post";
+    let url = BASE_URL+"/feed/post";
     let method = "POST";
     if (this.state.editPost) {
       console.log("Ha");
-      url = "http://localhost:8080/feed/post/" + this.state.editPost._id;
+      url = BASE_URL+"/feed/post/" + this.state.editPost._id;
       method = "PUT";
     }
 
@@ -197,7 +198,7 @@ class Feed extends Component {
 
   deletePostHandler = (postId) => {
     this.setState({ postsLoading: true });
-    fetch("http://localhost:8080/feed/post/" + postId, {
+    fetch(BASE_URL+"/feed/post/" + postId, {
       method: "DELETE",
 
       headers: {

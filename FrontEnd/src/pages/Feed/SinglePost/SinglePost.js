@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '../../../components/Button/Button';
 import Image from '../../../components/Image/Image';
 import './SinglePost.css';
+import { BASE_URL } from '../../../util/helper';
 
 class SinglePost extends Component {
   state = {
@@ -14,7 +15,7 @@ class SinglePost extends Component {
 
   componentDidMount() {
     const postId = this.props.match.params.postId;
-    fetch('http://localhost:8080/feed/post/'+ postId,  {
+    fetch(BASE_URL+'/feed/post/'+ postId,  {
       headers : {
         Authorization : 'Bearer '+ this.props.token 
       }
