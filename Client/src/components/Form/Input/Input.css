@@ -1,0 +1,49 @@
+.input {
+  margin: 1rem 0 1.5rem;
+  width: 100%;
+}
+
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  color: white;
+  background-color: #171717;
+}
+
+
+.input label {
+  display: block;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  color: #ebebeb;
+  margin-left: 0.6rem;
+}
+
+.input input,
+.input textarea {
+  display: block;
+  font: inherit;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  border: 1px solid #11001d;
+  padding: 0.6em 1em;
+  background-color: #1c1c1c;
+  color: #dbdbdb;
+  border-radius: 8px;
+  outline: none;
+
+}
+
+.input .touched.invalid {
+    border-color: rgb(180, 72, 72);
+}
+
+.input input:focus,
+.input textarea:focus {
+  outline: none;
+  border-color: #ffffff;
+  color: #ffffff;
+}
