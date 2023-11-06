@@ -6,7 +6,7 @@ import { required, length, email } from "../../util/validators";
 import Auth from "./Auth";
 import AuthButton from "../../components/Button/AuthButton";
 import { NavLink } from "react-router-dom";
-
+import Button from "../../components/Button/Button"
 class Login extends Component {
   state = {
     loginForm: {
@@ -70,7 +70,7 @@ class Login extends Component {
       <div className="container__auth">
         <div className="lefthalf ">
           <div style={{textAlign: "center" , color: "#E5B8F4"}}>
-            <h1>Login if you have an account</h1>
+            <h1>Welcome Back!</h1>
             <dotlottie-player src="https://lottie.host/85ad37f9-077d-49f1-a218-f8a888d27315/3WwpeaABEr.json" background="transparent" speed="1" style={{width: "300px", height: "300px", margin:"0 auto"}}  autoplay></dotlottie-player>
 
           </div>
@@ -78,7 +78,7 @@ class Login extends Component {
 
         <div className="righthalf">
       <Auth>
-        <h1 className="title__">Welcome Back</h1>
+        <h1 className="title__">Login</h1>
         <form
           onSubmit={(e) =>
             this.props.onLogin(e, {
@@ -111,9 +111,9 @@ class Login extends Component {
           />
           <NavLink  to="/signup" className="auth_sublink" >Don't have an account? Sign up</NavLink>
           <div className="centeredDiv authButtonCon">
-            <AuthButton design="raised" type="submit" loading={this.props.loading}>
+            <Button design="raised" type="submit" loading={this.props.loading}>
               Login
-            </AuthButton>
+            </Button>
           </div>
         </form>
       </Auth>

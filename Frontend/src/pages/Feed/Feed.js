@@ -51,6 +51,7 @@ class Feed extends Component {
   }
 
   addpost=(post)=>{
+    post["imagePath"]= post.imageUrl
     this.setState(prevState => {
       const updatedPosts = [...prevState.posts];
       if (prevState.postPage === 1) {
