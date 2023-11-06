@@ -78,7 +78,7 @@ class Login extends Component {
 
         <div className="righthalf">
       <Auth>
-        <h1 className="title__">Login</h1>
+        <h1 className="title__">Welcome Back</h1>
         <form
           onSubmit={(e) =>
             this.props.onLogin(e, {
@@ -111,9 +111,9 @@ class Login extends Component {
           />
           <NavLink  to="/signup" className="auth_sublink" >Don't have an account? Sign up</NavLink>
           <div className="centeredDiv authButtonCon">
-            <Button design="raised" type="submit" loading={this.props.loading}>
+            <AuthButton design="raised" type="submit" loading={this.props.loading}>
               Login
-            </Button>
+            </AuthButton>
           </div>
         </form>
       </Auth>

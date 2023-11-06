@@ -1,0 +1,68 @@
+import React, { Component } from "react";
+import Button from "../../../components/Button/Button";
+import Image from "../../../components/Image/Image";
+import "./SinglePost.css";
+import { BASE_URL } from "../../../util/helper";
+import Footer from "../../../components/Footer/Footer";
+
+class SinglePost extends Component {
+  state = {
+    title: "",
+    author: "",
+    date: "",
+    image: "",
+    content: "",
+  };
+
+  componentDidMount() {
+    const postId = this.props.match.params.postId;
+    fetch(BASE_URL + "/feed/post/" + postId, {
+      headers: {
+        Authorization: "Bearer " + this.props.token,
+      },
+    })
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error("Failed to fetch status");
+        }
+        return res.json();
+      })
+      .then((resData) => {
+        this.setState({
+          title: resData.post.title,
+          author: resData.post.creatorName,
+          image: resData.post.imageUrl,
+          date: new Date(resData.post.createdAt).toLocaleDateString("en-US"),
+          content: resData.post.content,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  render() {
+    return (
+      <>
+        <section className="single-post" style={{marginBottom:"20px"}}>
+          <h1>{this.state.title}</h1>
+          <h2>
+            Created by {this.state.author} on {this.state.date}
+          </h2>
+          <div className="single-post__image">
+            <Image contain imageUrl={this.state.image} />
+          </div>
+          <p>{this.state.content}</p>
+          <div className="action_container">
+            <Button mode="flat" link={"/feed"}>
+              Back
+            </Button>
+          </div>
+        </section>
+        <Footer />
+      </>
+    );
+  }
+}
+
+export default SinglePost;

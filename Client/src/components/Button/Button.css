@@ -53,11 +53,3 @@ a.button {
   text-decoration: none;
   transform: scale(1.02);
 }
-
-.button--delete{
-  background-color: rgb(225, 58, 58);
-}
-
-.button--edit{
-  background-color: #6ee67e;
-}
