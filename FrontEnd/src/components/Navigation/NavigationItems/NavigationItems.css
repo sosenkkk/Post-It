@@ -4,22 +4,27 @@
 
 .navigation-item a {
   text-decoration: none;
-  color: white;
+  color: rgba(255, 255, 255, 0.75);
+  transition: 200ms ease-in;
+  font-size: 1.1rem;
 }
 
 .navigation-item.mobile {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
+  transition: 200ms ease-in;
   margin: 0.5rem 0;
 }
 
 .navigation-item.mobile a {
-  color: #3b0062;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.2rem;
+
 }
 
 .navigation-item a:hover,
 .navigation-item a:active,
 .navigation-item a.active {
-  color: #fab83f;
+  color: #ffffff;
 }
 
 .navigation-item:last-of-type {
@@ -30,20 +35,21 @@
   font: inherit;
   background: transparent;
   border: none;
-  color: white;
+  color: rgba(255, 255, 255, 0.75);
   cursor: pointer;
   padding: 0;
 }
 
 .mobileButton button {
-  font-size: 1.75rem;
+  font-size: 1.2rem;
   margin: 0.5rem 0;
-  color: #3b0062;
+    color: rgba(255, 255, 255, 0.75);
+
 }
 
 .navigation-item button:hover,
 .navigation-item button:active {
-  color: #fab83f;
+  color: #ffffff;
 }
 
 

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-
+import openSocket from "socket.io-client"
 import Post from "../../components/Feed/Post/Post";
 import Button from "../../components/Button/Button";
 import FeedEdit from "../../components/Feed/FeedEdit/FeedEdit";
@@ -9,6 +9,7 @@ import Loader from "../../components/Loader/Loader";
 import ErrorHandler from "../../components/ErrorHandler/ErrorHandler";
 import "./Feed.css";
 import { BASE_URL } from "../../util/helper";
+import Footer from './../../components/Footer/Footer';
 
 class Feed extends Component {
   state = {
@@ -41,6 +42,32 @@ class Feed extends Component {
       .catch(this.catchError);
 
     this.loadPosts();
+    const socket = openSocket(BASE_URL);
+    socket.on('posts', data=>{
+      if(data.action === 'create'){
+        this.addpost(data.post)
+      }
+    })
+  }
+
+  addpost=(post)=>{
+    post["imagePath"]= post.imageUrl
+    this.setState(prevState => {
+      const updatedPosts = [...prevState.posts];
+      if (prevState.postPage === 1) {
+        if (prevState.posts.length >= 2) {
+          updatedPosts.pop();
+        }
+        updatedPosts.unshift(post);
+      }
+      console.log(updatedPosts)
+
+      return {
+        posts: updatedPosts,
+        totalPosts: prevState.totalPosts + 1
+      };
+    });
+    
   }
 
   loadPosts = (direction) => {
@@ -137,7 +164,6 @@ class Feed extends Component {
     let url = BASE_URL+"/feed/post";
     let method = "POST";
     if (this.state.editPost) {
-      console.log("Ha");
       url = BASE_URL+"/feed/post/" + this.state.editPost._id;
       method = "PUT";
     }
@@ -173,9 +199,7 @@ class Feed extends Component {
               (p) => p._id === prevState.editPost._id
             );
             updatedPosts[postIndex] = post;
-          } else if (prevState.posts.length < 2) {
-            updatedPosts = prevState.posts.concat(post);
-          }
+          } 
           return {
             posts: updatedPosts,
             isEditing: false,
@@ -296,6 +320,7 @@ class Feed extends Component {
               ))}
             </Paginator>
           )}
+          <Footer />
         </section>
       </Fragment>
     );

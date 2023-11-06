@@ -4,6 +4,8 @@ import Input from '../../components/Form/Input/Input';
 import Button from '../../components/Button/Button';
 import { required, length, email } from '../../util/validators';
 import Auth from './Auth';
+import AuthButton from '../../components/Button/AuthButton';
+import { NavLink } from 'react-router-dom';
 
 class Signup extends Component {
   state = {
@@ -73,9 +75,11 @@ class Signup extends Component {
     return (
       <div className="container__auth">
       <div className="lefthalf ">
-        <div style={{textAlign: "center" , color: "white"}}>
+      <div style={{textAlign: "center" , color: "#E5B8F4"}}>
+
           <h1>Hello there,</h1>
           <h3>Register if you don't have an account</h3>
+          <dotlottie-player src="https://lottie.host/d7748d3c-194e-4428-97c1-8d9a8d7d5114/8viuSckMWA.json" background="transparent" speed="1" style={{width: "350px", height: "400px", margin:"0 auto"}} autoplay></dotlottie-player>
         </div>
       </div>
       <div className="righthalf">
@@ -116,10 +120,12 @@ class Signup extends Component {
             valid={this.state.signupForm['password'].valid}
             touched={this.state.signupForm['password'].touched}
           />
-          <div className='centeredDiv'>
-          <Button design="raised" type="submit" loading={this.props.loading}>
+          <NavLink  to="/login" className="auth_sublink" >Have an account? Sign In</NavLink>
+
+          <div className='centeredDiv authButtonCon'>
+          <AuthButton design="raised" type="submit" loading={this.props.loading}>
             Signup
-          </Button>
+          </AuthButton>
           </div>
           
         </form>

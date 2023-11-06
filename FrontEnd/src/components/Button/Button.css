@@ -1,64 +1,55 @@
 .button {
-  --color: #560bad;
-  display: inline-block;
-  width: 8em;
-  height: 2.6em;
-  line-height: 2em;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid var(--color);
-  transition: color .5s;
-  z-index: 1;
   font-size: 17px;
-  border-radius: 8px;
-  font-weight: 500;
-  color: var(--color);
-  padding: 0;
-  margin: 10px;
   cursor: pointer;
- }
- 
- .button:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  background: var(--color);
-  height: 150px;
-  width: 200px;
-  border-radius: 50%;
- }
- 
- .button:hover {
-  color: #fff;
- }
- 
- .button:before {
-  top: 100%;
-  left: 100%;
-  transition: all .7s;
- }
- 
- .button:hover:before {
-  top: -30px;
-  left: -30px;
- }
- 
- .button:active:before {
-  background: #780ca3;
-  transition: background 0s;
- }
+  padding: 0.5em 2em;
+  border: transparent;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  background: rgb(124, 20, 204);
+  color: white;
+  border-radius: 4px;
+}
 
- .button:disabled{
-  background-color: #5f5f5f;
-  color: #2c1941;
-  border: 1px solid #2c1941;
-  cursor:not-allowed;
- }
+.button:hover {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgb(169, 30, 255) 0%,
+    rgb(157, 0, 255) 100%
+  );
+}
 
- a.button{
-  background-color: #ffffff;
+.button:active {
+  transform: translate(0em, 0.2em);
+}
+a.button {
   text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
- }
+}
+
+.authButton {
+  margin: 2px;
+  padding: 12px 45px;
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgba(111, 19, 131, 1) 9%,
+    rgba(189, 25, 187, 1) 50%,
+    rgba(85, 33, 175, 1) 87%
+  );
+  border: none;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  width: 100%;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.authButton:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+  transform: scale(1.02);
+}

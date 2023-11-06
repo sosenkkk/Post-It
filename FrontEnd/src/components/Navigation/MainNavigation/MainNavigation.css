@@ -1,6 +1,8 @@
 .main-nav {
   height: 100%;
-  padding: 0 1rem;
+  padding: 1rem 2rem;
+  max-width: 1180px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
 }

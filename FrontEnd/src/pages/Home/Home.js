@@ -2,13 +2,12 @@ import React from "react";
 import "./Home.css";
 const Home = () => {
   let hscroller = document;
-  hscroller.addEventListener("scroll",()=>{
+  hscroller.addEventListener("scroll", () => {
     var h = window.screen.height;
     if (window.pageYOffset > h) {
-      dis()
-      
-  }
-  })
+      dis();
+    }
+  });
   const dis = () => {
     hscroller.getElementById("wrapper_scroll").classList.add("disable_scroll");
   };
@@ -107,41 +106,35 @@ const Home = () => {
                 <h1 className="title_main">Post It</h1>
               </div>
             </div>
-            <h2 className="title_sub ">
-              Post what you like!
-            </h2>
+            <h2 className="title_sub ">Post what you like!</h2>
           </div>
         </div>
       </div>
 
-      <div
-        className="mid__section "
-        id="div"
-        onMouseEnter={dis}
-        onClick={dis}
-      >
+      <div className="mid__section " id="div" onMouseEnter={dis} onClick={dis}>
         <hr className=" ruler__front" />
 
         <div className="info ">
           <div className="what">
             <h1>What is Post It?</h1>
             <p>
-              Post It is a free photo sharing website. People can upload photos to
-              our service. Create account and start posting what you like.
+              Post It is a free photo sharing website. People can upload photos
+              to our service. Create account and start posting what you like.
             </p>
           </div>
           <div className="why">
             <h1>Why Post It?</h1>
             <p>
-              Post It is like a simplified version of Facebook with an emphasis on
-              just photo sharing / status sharing also you can upload your status.
+              Post It is like a simplified version of Facebook with an emphasis
+              on just photo sharing / status sharing also you can upload your
+              status.
             </p>
           </div>
         </div>
 
         <div className="conclusion">
           <hr className="ruler__front" />
-          
+
           <h2 className="">What we wanna say is!!</h2>
         </div>
         <div className="cards_container">
@@ -252,36 +245,32 @@ const Home = () => {
           </div>
         </div>
         <footer class="footer-distributed">
+          <div class="footer-right">
+           
+            <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/sosenkkk/">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/sosenkkk">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a target="_blank" rel="noopener noreferrer" href="https://dribbble.com/sosenkkk">
+              <i class="fa-brands fa-dribbble"></i>
+            </a>
+            <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/home">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+          </div>
 
-			<div class="footer-right">
+          <div class="footer-left">
+            <p class="footer-links">
+              <a class="link-1" href="/">
+                Home
+              </a>
+            </p>
 
-				<a href="/"><i class="fa-brands fa-facebook"></i></a>
-				<a href="/"><i class="fa-brands fa-twitter"></i></a>
-				<a href="/"><i class="fa-brands fa-linkedin"></i></a>
-				<a href="/"><i class="fa-brands fa-github"></i></a>
-        
-			</div>
-
-			<div class="footer-left">
-
-				<p class="footer-links">
-					<a class="link-1" href="/">Home</a>
-
-					<a href="/">Blog</a>
-
-					<a href="/">Pricing</a>
-
-					<a href="/">About</a>
-
-					<a href="/">Faq</a>
-
-					<a href="/">Contact</a>
-				</p>
-
-				<p>Post it &copy; 2023</p>
-			</div>
-
-		</footer>
+            <p>Post it &copy; 2023</p>
+          </div>
+        </footer>
       </div>
     </>
   );

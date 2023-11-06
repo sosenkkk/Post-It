@@ -1,6 +1,25 @@
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 0.5rem;
-    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.logo h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-family: "Oswald", sans-serif;
+  /* letter-spacing: 2px; */
+  font-weight: bold;
+  padding: 0.5rem;
+  color: white;
+}
+.logo img {
+  padding-top: 4px;
+  height: 2.2rem;
+}
+
+@media (max-width: 768px) {
+  .logo h1 {
+    display: none;
+  }
 }

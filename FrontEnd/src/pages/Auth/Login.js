@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 
 import Input from "../../components/Form/Input/Input";
-import Button from "../../components/Button/Button";
+import "./Auth.css"
 import { required, length, email } from "../../util/validators";
 import Auth from "./Auth";
+import AuthButton from "../../components/Button/AuthButton";
+import { NavLink } from "react-router-dom";
 
 class Login extends Component {
   state = {
@@ -67,14 +69,16 @@ class Login extends Component {
     return (
       <div className="container__auth">
         <div className="lefthalf ">
-          <div style={{textAlign: "center" , color: "white"}}>
-            <h1>Welcome</h1>
-            <h3>Login if you have an account</h3>
+          <div style={{textAlign: "center" , color: "#E5B8F4"}}>
+            <h1>Login if you have an account</h1>
+            <dotlottie-player src="https://lottie.host/85ad37f9-077d-49f1-a218-f8a888d27315/3WwpeaABEr.json" background="transparent" speed="1" style={{width: "300px", height: "300px", margin:"0 auto"}}  autoplay></dotlottie-player>
+
           </div>
         </div>
+
         <div className="righthalf">
       <Auth>
-        <h1 className="title__">Login</h1>
+        <h1 className="title__">Welcome Back</h1>
         <form
           onSubmit={(e) =>
             this.props.onLogin(e, {
@@ -105,10 +109,11 @@ class Login extends Component {
             valid={this.state.loginForm["password"].valid}
             touched={this.state.loginForm["password"].touched}
           />
-          <div className="centeredDiv">
-            <Button design="raised" type="submit" loading={this.props.loading}>
+          <NavLink  to="/signup" className="auth_sublink" >Don't have an account? Sign up</NavLink>
+          <div className="centeredDiv authButtonCon">
+            <AuthButton design="raised" type="submit" loading={this.props.loading}>
               Login
-            </Button>
+            </AuthButton>
           </div>
         </form>
       </Auth>

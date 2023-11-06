@@ -3,17 +3,18 @@
   border: none;
   display: flex;
   width: 2.5rem;
-  height: 80%;
+  height: 65%;
   flex-direction: column;
   justify-content: space-evenly;
   cursor: pointer;
   padding: 0;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 
 .mobile-toggle__bar {
-  width: 2.5rem;
-  height: 4px;
+  width: 28px;
+  height: 2px;
+  border-radius: 99px;
   background: white;
 }
 

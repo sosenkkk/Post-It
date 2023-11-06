@@ -3,16 +3,14 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 // const multer = require("multer");
-const fileUpload = require("express-fileupload")
+const fileUpload = require("express-fileupload");
 const { v4: uuidv4 } = require("uuid");
 const cors = require("cors");
-const dotenv = require('dotenv').config
+const dotenv = require("dotenv").config;
 const feedRoutes = require("./routes/feed");
 const authRoutes = require("./routes/auth");
 const PORT = process.env.PORT || 8080;
 const app = express();
-
-
 
 const mongoUrl = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.rfcsb3n.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
 // const storage = multer.diskStorage({
@@ -41,9 +39,11 @@ app.options("*", cors());
 app.use(cors());
 app.use(bodyParser.json()); // application/json
 // app.use(multer({ storage: storage, fileFilter: fileFilter }).single("image"));
-app.use(fileUpload({
-  useTempFiles:true
-}))
+app.use(
+  fileUpload({
+    useTempFiles: true,
+  })
+);
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use((req, res, next) => {
@@ -72,10 +72,12 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(
-    mongoUrl+"?retryWrites=true&w=majority"
-  )
+  .connect(mongoUrl + "?retryWrites=true&w=majority")
   .then((res) => {
-    app.listen(PORT);
+    const server = app.listen(PORT);
+    const io = require("./socket").init(server);
+    io.on("connection", (socket) => {
+      console.log("client connected");
+    });
   })
   .catch((err) => console.log(err));
