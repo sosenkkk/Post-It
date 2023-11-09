@@ -123,17 +123,19 @@ class App extends Component {
         name: authData.signupForm.name.value,
       }),
     })
-      .then((res) => {
+      .then(async(res) => {
+        const result = await res.json()
+        console.log(result)
         if (res.status === 422) {
           throw new Error(
-            "Validation failed. Make sure the email address isn't used yet!"
+            result.data[0].msg
           );
         }
         if (res.status !== 200 && res.status !== 201) {
           console.log("Error!");
           throw new Error("Creating a user failed!");
         }
-        return res.json();
+        return result;
       })
       .then((resData) => {
         console.log(resData);

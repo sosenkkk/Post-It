@@ -14,8 +14,8 @@ router.put('/signup', [
         })
     })
     .normalizeEmail(),
-    body('password').trim().isLength({min: 6}),
-    body('name').trim().not().isEmpty()
+    body('password').trim().isLength({min: 6}).withMessage('Please Enter a minimum 6 digit password.'),
+    body('name').trim().not().isEmpty().withMessage('Please Enter a valid username.'),
 ],authController.signup );
 
 router.post('/login', authController.login )

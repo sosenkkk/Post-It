@@ -6,7 +6,6 @@ import { required, length, email } from "../../util/validators";
 import Auth from "./Auth";
 import AuthButton from "../../components/Button/AuthButton";
 import { NavLink } from "react-router-dom";
-import Button from "../../components/Button/Button"
 class Login extends Component {
   state = {
     loginForm: {
