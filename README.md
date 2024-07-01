@@ -36,7 +36,7 @@ To get a local copy up and running, follow these steps:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/sosenkkk/post-it.git
+    git clone https://github.com/your-username/post-it.git
     ```
 
 2. **Navigate to the project directory:**
@@ -45,17 +45,18 @@ To get a local copy up and running, follow these steps:
     cd post-it
     ```
 
-3. **Install dependencies:**
+3. **Install dependencies for the backend:**
 
     ```bash
+    cd Server
     npm install
     ```
 
 4. **Set up environment variables:**
 
-    Create a `.env` file in the root directory and add your MongoDB connection string and other necessary environment variables.
+    Create a `.env` file in the `server` directory and add your MongoDB connection string and other necessary environment variables.
 
-5. **Start the development server:**
+5. **Start the backend server:**
 
     ```bash
     npm run dev
@@ -64,7 +65,7 @@ To get a local copy up and running, follow these steps:
 6. **Navigate to the client directory and install dependencies:**
 
     ```bash
-    cd client
+    cd ../client
     npm install
     ```
 
@@ -74,7 +75,8 @@ To get a local copy up and running, follow these steps:
     npm start
     ```
 
-Your application should now be running on `http://localhost:3000` for the frontend and `http://localhost:5000` for the backend.
+
+Your application should now be running on `http://localhost:3000` for the frontend and `http://localhost:8080` for the backend.
 
 
 
